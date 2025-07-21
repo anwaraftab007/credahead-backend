@@ -20,7 +20,7 @@ exports.sendContactEmail = async (req, res) => {
         <h2 style="color:#FF6B35; border-bottom:2px solid #FF6B35; padding-bottom:10px;">Get in Touch</h2>
         <table style="width:100%; margin-top:20px; border-collapse:collapse;">
         <tr>
-            <td style="padding:8px; font-weight:bold; color:#333;">Name:</td>
+            <td style="padding:8px; font-weight:bold; color:#333;">Subject:</td>
             <td style="padding:8px; color:#555;">${subject}</td>
           </tr>
           <tr>

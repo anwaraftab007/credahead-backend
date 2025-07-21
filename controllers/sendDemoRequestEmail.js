@@ -21,7 +21,7 @@ exports.sendDemoRequestEmail = async (req, res) => {
         <h2 style="color:#FF6B35; border-bottom:2px solid #FF6B35; padding-bottom:10px;">Request a Demo</h2>
         <table style="width:100%; margin-top:20px; border-collapse:collapse;">
         <tr>
-            <td style="padding:8px; font-weight:bold;">Name:</td>
+            <td style="padding:8px; font-weight:bold;">Subject:</td>
             <td style="padding:8px;">${subject}</td>
           </tr>
           <tr>
