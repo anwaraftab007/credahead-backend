@@ -35,10 +35,6 @@ exports.sendContactEmail = async (req, res) => {
             <td style="padding:8px; font-weight:bold; color:#333;">Phone:</td>
             <td style="padding:8px; color:#555;">${phone}</td>
           </tr>
-          <tr style="background:#f9f9f9;">
-            <td style="padding:8px; font-weight:bold; color:#333;">Subject:</td>
-            <td style="padding:8px; color:#555;">${subject || 'N/A'}</td>
-          </tr>
           <tr>
             <td style="padding:8px; font-weight:bold; color:#333; vertical-align:top;">Message:</td>
             <td style="padding:8px; color:#555; white-space:pre-line;">${message}</td>
