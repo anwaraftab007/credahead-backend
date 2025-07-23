@@ -66,14 +66,14 @@ require('dotenv').config();
 exports.sendContactEmail = async (req, res) => {
   const { name, email, phone, subject, message } = req.body;
 
-  if (!name || !email || !message) {
+  if (!name || !email) {
     return res.status(400).json({ success: false, msg: 'Please fill all required fields.' });
   }
 
   const mailOptions = {
     from: `${process.env.EMAIL_USER}`,
     to: process.env.EMAIL_RECEIVER,
-    subject: 'Get in Touch',
+    subject: `Get In Touch : ${name}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; border:1px solid #ddd; max-width:600px; margin:0 auto; padding:20px; background:#fff; border-radius:8px;">
         <div style="text-align:center; margin-bottom:20px;">
@@ -95,12 +95,14 @@ exports.sendContactEmail = async (req, res) => {
           </tr>
           <tr>
             <td style="padding:8px; font-weight:bold; color:#333;">Phone:</td>
-            <td style="padding:8px; color:#555;">${phone}</td>
+            <td style="padding:8px; color:#555;">${phone || 'N/A'}</td>
           </tr>
+          ${message ? `
           <tr>
             <td style="padding:8px; font-weight:bold; color:#333; vertical-align:top;">Message:</td>
             <td style="padding:8px; color:#555; white-space:pre-line;">${message}</td>
           </tr>
+          ` : ''}
         </table>
         <div style="margin-top:30px; text-align:center; color:#999; font-size:12px;">
           This message was sent from the contact form on <strong>Your Website</strong>.
@@ -110,17 +112,17 @@ exports.sendContactEmail = async (req, res) => {
   };
 
   try {
-    console.log('\n--- Sending Contact Email ---');
-    console.log('From:', mailOptions.from);
-    console.log('To:', mailOptions.to);
-    console.log('Subject:', mailOptions.subject);
-    console.log('Sending via transporter:', transporter.transporterName || 'default');
+    // console.log('\n--- Sending Contact Email ---');
+    // console.log('From:', mailOptions.from);
+    // console.log('To:', mailOptions.to);
+    // console.log('Subject:', mailOptions.subject);
+    // console.log('Sending via transporter:', transporter.transporterName || 'default');
 
     const result = await transporter.sendMail(mailOptions);
     
-    console.log('✅ Email sent successfully!');
-    console.log('Message ID:', result.messageId);
-    console.log('Response:', result.response);
+    // console.log('✅ Email sent successfully!');
+    // console.log('Message ID:', result.messageId);
+    // console.log('Response:', result.response);
 
     res.status(200).json({ success: true, msg: 'Message sent successfully!' });
   } catch (error) {
