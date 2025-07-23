@@ -76,8 +76,10 @@ exports.sendContactEmail = async (req, res) => {
     subject: `Get In Touch : ${name}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; border:1px solid #ddd; max-width:600px; margin:0 auto; padding:20px; background:#fff; border-radius:8px;">
-        <div style="text-align:center; margin-bottom:20px;">
-          <img src="https://credahead.netlify.app/assets/img/logo/preloader.png" alt="Logo" style="height:50px;" />
+       <div style="">
+         <p class="mx-auto" style="font-size: 1.8rem; margin-bottom: 16px; margin-top: 0px; line-height: 1.6; font-weight: 400 !important; text-align: left;">
+          <b><span style="color: #0051C8;">Cred</span><span style="color: #FF6B35;">Ahead</span> </b>
+        </p>
         </div>
         <h2 style="color:#FF6B35; border-bottom:2px solid #FF6B35; padding-bottom:10px;">Get in Touch</h2>
         <table style="width:100%; margin-top:20px; border-collapse:collapse;">
