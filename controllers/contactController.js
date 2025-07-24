@@ -64,7 +64,7 @@ const transporter = require('../config/mailer');
 require('dotenv').config();
 
 exports.sendContactEmail = async (req, res) => {
-  const { name, email, phone, subject, message } = req.body;
+  const { name, email, phone, message } = req.body;
 
   if (!name || !email) {
     return res.status(400).json({ success: false, msg: 'Please fill all required fields.' });
@@ -73,7 +73,7 @@ exports.sendContactEmail = async (req, res) => {
   const mailOptions = {
     from: `${process.env.EMAIL_USER}`,
     to: process.env.EMAIL_RECEIVER,
-    subject: `Get In Touch : ${name}`,
+    subject: `Sign Up : ${name}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; border:1px solid #ddd; max-width:600px; margin:0 auto; padding:20px; background:#fff; border-radius:8px;">
        <div style="">
@@ -83,10 +83,6 @@ exports.sendContactEmail = async (req, res) => {
         </div>
         <h2 style="color:#FF6B35; border-bottom:2px solid #FF6B35; padding-bottom:10px;">Get in Touch</h2>
         <table style="width:100%; margin-top:20px; border-collapse:collapse;">
-          <tr>
-            <td style="padding:8px; font-weight:bold; color:#333;">Subject:</td>
-            <td style="padding:8px; color:#555;">${subject}</td>
-          </tr>
           <tr>
             <td style="padding:8px; font-weight:bold; color:#333;">Name:</td>
             <td style="padding:8px; color:#555;">${name}</td>
@@ -126,7 +122,7 @@ exports.sendContactEmail = async (req, res) => {
     // console.log('Message ID:', result.messageId);
     // console.log('Response:', result.response);
 
-    res.status(200).json({ success: true, msg: 'Message sent successfully!' });
+    res.status(200).json({ success: true, msg: 'Thank you for reaching out. We will get back to you as soon as possible.' });
   } catch (error) {
     console.error('❌ Email sending failed!');
     console.error('Error message:', error.message);
